@@ -9,7 +9,7 @@ def vat_paragon(lista):
     return suma
 zakupy = [0.11, 0.33]
 print(vat_faktura(zakupy) == vat_paragon(zakupy))
-#Decimal                isinstance()
+#
 zakupyd = [Decimal("0.11") , Decimal("0.33")]
 def vat_faktura_d(lista):
    return sum(lista) * Decimal("0.23")
