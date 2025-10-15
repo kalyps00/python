@@ -8,11 +8,11 @@ def dhondt(votes_list: list[tuple[str, int]], space):
         for i in range(1, space + 1):
             ilorazy.append((num // i, num, name))
     ilorazy.sort(reverse=True)
-    mandaty = {name: 0 for name, _ in votes_list}
+    mandate = {name: 0 for name, _ in votes_list}
     for i in range(space):
-        na = ilorazy[i][2]
-        mandaty[na] += 1
-    return mandaty
+        name = ilorazy[i][2]
+        mandate[name] += 1
+    return mandate
 
 
 if __name__ == "__main__":
