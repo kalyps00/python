@@ -18,14 +18,13 @@ def solve(g):
                 for n in range(1, 10):
                     if ok(g, i, j, n):
                         g[i][j] = n
-                        for sol in solve(g):
-                            yield sol
+                        yield from solve(g)
                         g[i][j] = 0
                 return
-    yield [row[:] for row in g]
+    yield g
 
 
-def pretty(g):
+def pretty_print(g):
     for r in g:
         print(" ".join(str(x) for x in r))
     print()
@@ -33,21 +32,21 @@ def pretty(g):
 
 if __name__ == "__main__":
     board = [
-        [5, 3, 0, 0, 7, 0, 0, 0, 0],
+        [0, 0, 0, 0, 7, 0, 0, 0, 0],
         [6, 0, 0, 1, 9, 5, 0, 0, 0],
         [0, 9, 8, 0, 0, 0, 0, 6, 0],
         [8, 0, 0, 0, 6, 0, 0, 0, 3],
         [4, 0, 0, 8, 0, 3, 0, 0, 1],
         [7, 0, 0, 0, 2, 0, 0, 0, 6],
-        [0, 6, 0, 0, 0, 0, 2, 8, 0],
+        [0, 0, 0, 0, 0, 0, 2, 8, 0],
         [0, 0, 0, 4, 1, 9, 0, 0, 5],
         [0, 0, 0, 0, 8, 0, 0, 7, 9],
     ]
-
     print("Plansza początkowa:")
-    pretty(board)
+    pretty_print(board)
 
     print("Rozwiązanie:")
+    sol = solve(board)
     for solution in solve(board):
-        pretty(solution)
+        pretty_print(solution)
         break
